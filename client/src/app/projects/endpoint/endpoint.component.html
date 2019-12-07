@@ -1,0 +1,60 @@
+<!-- Visible on mobile -->
+<div *ngIf="deviceService.isMobile()" class="px-2 pt-2 bg-dark">
+
+  <div class="input-group pb-2">
+    <div class="input-group-prepend">
+      <button [routerLink]="['/project']" class="btn btn-dark" type="button">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+    </div>
+    <select class="form-control" #routeSelector [ngModel]="routeId" (change)="select_route(routeSelector.value)">
+      <option *ngFor="let r of get_route_list" value="{{r._id}}">{{ r.Method }} - {{ r.Path }}</option>
+    </select>
+  </div>
+  <div class="bg-white content p-4 rounded-top">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Visible on desktop -->
+<div class="d-flex" *ngIf="deviceService.isDesktop()">
+  <nav class="sidebar sidenav bg-dark ">
+    <div class="stickyBtnGroup bg-dark">
+      <div class="btn-group p-0 m-0 w-100  " role="group">
+        <button class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['/project']">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button class="btn  btn-secondary col-md-4" [routerLink]="['endpoint', 'new']">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn  btn-secondary col-md-4" (click)="get_project_data()">
+          <i [ngClass]="{'fa-spin': (is_loading_project || is_loading_routes)}" class="fa fa-refresh"></i>
+        </button>
+        <button type="button" class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['settings']">
+          <i class="fa fa-cog"></i>
+        </button>
+      </div>
+      <div class="mt-1 px-2 ">
+        <div class="input-group input-group-seamless">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i [ngClass]="{'text-dark': route_filter}" class="fa fa-search" aria-hidden="true"></i>
+            </div>
+          </div>
+          <input [(ngModel)]="route_filter" type="text" class="form-control radius-0"
+            placeholder="{{'GENERAL.Filter' | translate}}...">
+        </div>
+      </div>
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center rounded-0"
+        *ngFor="let r of get_route_list" [routerLink]="['endpoint', r._id]" [routerLinkActive]="['active-endpoint']">
+        <span> {{ r.Path }} </span>
+        <span class="badge badge-{{css_class_of_path_method(r.Method)}} badge-pill">{{ r.Method }}</span>
+      </li>
+    </ul>
+  </nav>
+  <div class="content p-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

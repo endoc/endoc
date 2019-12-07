@@ -1,0 +1,36 @@
+<p class="text-center"> <code> < Coming soon: Export routes on Postman format /> </code> </p>
+
+<table class="table table-bordered table-striped text-center" >
+  <thead class="thead-default">
+    <tr>
+      <th> {{ 'FIELDS.Title' | translate }} </th>
+      <th> {{ 'FIELDS.CreateDate' | translate }} </th>
+      <th> {{ 'PROJECT.Export' | translate }} </th>
+    </tr>
+    </thead>
+    <tbody *ngIf="!check_ins">
+      <tr>
+        <td> {{ 'CHECKIN.no_check_ins' | translate }} </td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="check_ins" >
+      <tr *ngFor="let p of check_ins" >
+        <td> {{ p.Title }} </td>
+        <td> {{ p.CheckInDate | date }} </td>
+        <td>
+          <button type="button" (click)="export_html(p._id)" class="btn btn-sm btn-outline-dark mr-2">
+              <i class="fa fa-spin fa-spinner" *ngIf="loading_html"></i>
+              <i class="fa fa-html5" *ngIf="!loading_html"></i>
+          </button>
+          <button type="button" (click)="export_pdf(p._id)" class="btn btn-sm btn-outline-dark mr-2">
+              <i class="fa fa-spin fa-spinner" *ngIf="loading_pdf"></i>
+              <i class="fa fa-file-pdf-o" *ngIf="!loading_pdf"></i>
+          </button>
+          <button type="button" (click)="publish(p._id)" class="btn btn-sm btn-outline-dark">
+              <i class="fa fa-spin fa-spinner" *ngIf="publishing"></i>
+              <i class="fa fa-code" *ngIf="!publishing"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+</table>

@@ -1,0 +1,6 @@
+.btn-active {
+  background-color: #212529 !important;
+  outline: none !important;
+  color: white;
+  box-shadow: none !important
+}

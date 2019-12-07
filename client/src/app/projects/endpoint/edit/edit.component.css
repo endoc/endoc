@@ -1,0 +1,13 @@
+@media screen and (min-height: 450px) {
+  .square-select {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+
+}
+
+.route-save {
+  bottom: 0;
+  right: 0;
+  position: fixed;
+}

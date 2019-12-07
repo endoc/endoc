@@ -1,0 +1,11 @@
+@media (min-width: 1025px) {
+  #no-data-img {
+    width: 10vw;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1025px) {
+  #no-data-img {
+    width: 70vw;
+  }
+}

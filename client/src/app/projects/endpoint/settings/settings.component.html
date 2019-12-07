@@ -1,0 +1,28 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>{{ 'GENERAL.Settings' | translate }}</h4>
+    <hr>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-block btn-outline-dark" [routerLink]="['members']" [routerLinkActive]="['btn-active']"> 
+      <i class="fa fa-users pr-2"></i>
+      {{ 'PROJECT.Members' | translate }} 
+    </button>
+    <button class="btn btn-block btn-outline-dark" [routerLink]="['check-in']" [routerLinkActive]="['btn-active']"> 
+      <i class="fa fa-code-fork pr-2"></i>
+      {{ 'PROJECT.CheckIn' | translate }}  
+    </button>
+    <!-- <button class="btn btn-block btn-outline-dark" [routerLink]="['export']" [routerLinkActive]="['btn-active']"> 
+      <i class="fa fa-cogs pr-2"></i>
+      {{ 'PROJECT.Export' | translate }}  
+    </button> -->
+    <button class="btn btn-block btn-outline-dark" [routerLink]="['publish']" [routerLinkActive]="['btn-active']"> 
+      <i class="fa fa-cogs pr-2"></i>
+      {{ 'PROJECT.Publish' | translate }}  
+    </button>
+  </div>
+  <div class="col-md-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

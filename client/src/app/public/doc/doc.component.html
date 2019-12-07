@@ -1,0 +1,84 @@
+<div class="container py-5" *ngIf="ci">
+  <h3> {{ ci.Project.Title }} </h3>
+  <h6 class="text-muted"> {{ ci.Project.Description }} </h6>
+  <hr>
+  <h6 class="text-muted text-right"> <small>{{ ci.Title }}</small> </h6>
+  <br>
+  <input type="text" [(ngModel)]="filter" class="form-control" placeholder="{{'GENERAL.Filter' | translate}}">
+  <br>
+  <h5> Endpoints </h5>
+
+
+    <div class="card my-3" *ngFor="let e of endpoint_list">
+      <div class="card-header">
+        <i *ngIf="e.IsProtected" class="fa fa-lock pr-2 text-success"></i>
+        <i *ngIf="!e.IsProtected" class="fa fa-lock pr-2 text-danger"></i>
+        <span class="badge badge-{{css_class_of_path_method(e.Method)}} px-2 mr-2 text-right">{{ e.Method }}</span>
+      
+        <b> {{ e.Path }} </b>
+        <br>
+        <small class="text-muted"> {{ e.Description }} </small>
+      </div>
+      <div class="card-body p2">
+
+        <div *ngIf="e.Headers">
+          <h6> Headers </h6>
+          <table class="table table-sm table-bordered">
+            <thead class="bg-light">
+              <tr>
+                <td class="px-2"><small> Key </small></td>
+                <td class="px-2"><small> Value </small></td>
+                <td class="px-2"><small> Description </small></td>
+              </tr>
+            </thead>
+            <tbody class="text-muted">
+              <tr *ngFor="let h of e.Headers">
+                <td class="px-2"><small> {{ h.Key }} </small></td>
+                <td class="px-2"><small> {{ h.Value }} </small></td>
+                <td class="px-2"><small> {{ h.Description }} </small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="e.Parameters">
+            <h6> Parameters </h6>
+            <table class="table table-sm table-bordered">
+              <thead class="bg-light">
+                <tr>
+                  <td class="px-2"><small> Required </small></td>
+                  <td class="px-2"><small> Type </small></td>
+                  <td class="px-2"><small> Key </small></td>
+                  <td class="px-2"><small> Type </small></td>
+                </tr>
+              </thead>
+              <tbody class="text-muted">
+                <tr *ngFor="let p of e.Parameters">
+                  <td class="px-2"><small>
+                    <span *ngIf="p.IsRequired" class="text-danger">*</span>
+                  </small></td>
+                  <td class="px-2"><small> {{ p.Type }} </small></td>
+                  <td class="px-2"><small> {{ p.ParameterName }} </small></td>
+                  <td class="px-2"><small> {{ p.ParameterDataType}} </small></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div *ngIf="e.Responses.length" class="border rounded p-4">
+            <h6> Response example: </h6>
+            <div class="row" *ngFor="let item of e.Responses">
+              <div class="col-2">
+                <code> <i>HTTP</i> <code> {{ item.StatusCode}}</code></code>
+              </div>
+              <div class="col-10">
+                <pre><code>{{ item.Content}}</code></pre>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </div>
+
+
+</div>

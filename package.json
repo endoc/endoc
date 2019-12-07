@@ -1,0 +1,37 @@
+{
+  "name": "endoc",
+  "version": "2.1.0",
+  "description": "Endpoint documentation tool",
+  "main": "index.js",
+  "scripts": {
+    "buildendoc": "git pull && cd client && npm install && ng build --prod --extract-css=false —-base-href /endoc/ && cd .. && npm install && nodemon index.js",
+    "gh-page-publish": "cd client && npm install && ng build --prod --extract-css=false --base-href /endoc/ && cd .. && git add . && git commit -m \"gh publish \" && git push && git subtree push --prefix client/dist origin gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agonxgashi/endoc.git"
+  },
+  "keywords": [
+    "endpoint",
+    "api",
+    "documentation",
+    "tool"
+  ],
+  "author": "Agon Gashi <agonxgashi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agonxgashi/endoc/issues"
+  },
+  "homepage": "https://github.com/agonxgashi/endoc#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "html-pdf": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.7",
+    "path": "^0.12.7",
+    "pug": "^2.0.4"
+  }
+}

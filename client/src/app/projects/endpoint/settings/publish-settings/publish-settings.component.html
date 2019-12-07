@@ -1,0 +1,66 @@
+
+<div *ngIf="publish_exists" class="row">
+  <div class="col-md-12 mb-5">
+    <div  class="card text-center">
+      <div class="card-header">
+        {{ 'PUBLISH.Current' | translate }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ publish.CheckInId.Title }}</h5>
+        <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+        <button class="btn btn-sm btn-dark mr-2" (click)="copy_public_url()">
+          <i class="fa fa-clone text-right"></i>
+        </button>
+        <a target="blank" href="{{public_link}}" class="btn btn-sm btn-dark">
+          <i class="fa fa-external-link"></i>
+        </a>
+      </div>
+      <div class="card-footer text-muted">
+          <label class="text-danger text-clickable" (click)="delete()">
+              <i class="fa fa-trash-o text-right pr-2"></i>
+              {{ 'PUBLISH.Unpublish' | translate }}
+            </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div  class="card text-center no-shadow">
+      <div class="card-header text-muted">
+        <small> Cooming soon: Attach personalized .pug file to your publish </small>
+      </div>
+      <div class="card-body">
+          <i class="fa fa-html5 fa-3x"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div  class="card text-center no-shadow ">
+      <div class="card-header text-muted">
+        <small> Cooming soon: Attach personalized .css file to your publish </small>
+      </div>
+      <div class="card-body">
+        <i class="fa fa-css3 fa-3x"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="!publish_exists" class="card text-center">
+  <div class="card-header">
+    <label> {{ 'PUBLISH.no_publish' | translate }} </label>
+  </div>
+  <div class="card-body">
+    <p>
+      {{ 'PUBLISH.info' | translate }}
+    </p>
+  </div>
+  <div class="card-footer text-muted">
+     <small>
+        {{ 'PUBLISH.how_to' | translate }}
+     </small>
+  </div>
+</div>

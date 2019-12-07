@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12" *ngIf="project_id">
+      <div class="input-group ">
+        <input type="text" class="form-control" placeholder="{{'CHECKIN.Title' | translate}}"
+          [(ngModel)]="check_in_to_save.Title" (keyup.enter)="save_check_in()">
+        <div class="input-group-append">
+          <button class="btn btn-dark" [disabled]="!check_in_to_save.Title" type="button" (click)="save_check_in()">
+            {{ 'PROJECT.CheckIn' | translate }}
+          </button>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <br>
+    <div class="col-md-12">
+        <p class="text-center"> <code> < Coming soon: Export routes on Postman format /> </code> </p>
+
+      <table class="table table-bordered table-striped text-center" >
+        <thead class="thead-default">
+          <tr>
+            <th> {{ 'FIELDS.Title' | translate }} </th>
+            <th> {{ 'FIELDS.CreateDate' | translate }} </th>
+            <th> {{ 'PROJECT.Export' | translate }} </th>
+          </tr>
+          </thead>
+          <tbody *ngIf="!check_in_list">
+            <tr>
+              <td colspan="3"> {{ 'CHECKIN.no_check_ins' | translate }} </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="check_in_list" >
+            <tr *ngFor="let p of check_in_list" >
+              <td> {{ p.Title }} </td>
+              <td> {{ p.CheckInDate | date }} </td>
+              <td>
+                <button type="button" (click)="export_html(p._id)" class="btn btn-sm btn-outline-dark mr-2">
+                    <i class="fa fa-spin fa-spinner" *ngIf="loading_html"></i>
+                    <i class="fa fa-html5" *ngIf="!loading_html"></i>
+                </button>
+                <button type="button" (click)="export_pdf(p._id)" class="btn btn-sm btn-outline-dark mr-2">
+                    <i class="fa fa-spin fa-spinner" *ngIf="loading_pdf"></i>
+                    <i class="fa fa-file-pdf-o" *ngIf="!loading_pdf"></i>
+                </button>
+                <button type="button" (click)="publish(p._id)" class="btn btn-sm btn-outline-dark">
+                    <i class="fa fa-spin fa-spinner" *ngIf="publishing"></i>
+                    <i class="fa fa-code" *ngIf="!publishing"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>

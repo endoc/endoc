@@ -1,0 +1,20 @@
+<nav class="navbar bg-dark">
+  <button type="button" data-micron="shake" class="btn btn-dark btn-sm btn-disabled">
+    &lt; endoc /&gt;
+  </button>
+  <span>
+    <button type="button" class="btn btn-dark btn-sm" data-toggle="dropdown">
+      <span *ngIf="usr">@{{ usr.Username }}</span>
+      <i *ngIf="!usr" class="fa fa-bars"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item clickable" (click)="useLanguage('al')">
+        <i class="fa fa-globe pr-2"></i> AL - Shqip</a>
+      <a class="dropdown-item clickable" (click)="useLanguage('en')">
+        <i class="fa fa-globe pr-2"></i> EN - English</a>
+      <div *ngIf="usr" class="dropdown-divider"></div>
+      <a *ngIf="usr" class="dropdown-item clickable text-danger" (click)="logOut()">
+        <i class="fa fa-sign-out pr-2"></i> Log Out</a>
+    </div>
+  </span>
+</nav>

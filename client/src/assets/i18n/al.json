@@ -1,0 +1,90 @@
+{
+  "GENERAL": {
+    "Search": "Kërko",
+    "Cancel": "Ndërprej",
+    "Save": "Ruaj",
+    "Back": "Prapa",
+    "Close": "Mbyll",
+    "General": "Gjenerale",
+    "Settings": "Rregullimet",
+    "Refresh": "Rifresko",
+    "Update": "Përditëso",
+    "Filter": "Filtro",
+    "Delete": "Fshij"
+  },
+  "FORMS": {
+    "Required": "Kjo fushë duhet të plotësohet"
+  },
+  "FIELDS": {
+    "Title": "Titulli",
+    "CreateDate": "Data e krijimit"
+  },
+  "RESPONSE": {
+    "ERR_INVALID_CREDENTIALS": "Kredenciale të gabuara!",
+    "ERR_USER_DOESNT_EXIST": "Ky shfrytëzues nuk ekzistzon!",
+    "ERR_SOMETHING_WENT_WRONG": "Diçka shkoi gabim. Ju lutem provoni përsëri!",
+    "MSG_SUCCESS_REGISTER": "Shfrytëzuesi u regjistrua suksesshëm!",
+    "MSG_UPDATED": "U përditësua suksesshëm",
+    "MSG_PROJECT_CREATED": "Projekti u krijua me sukses",
+    "ERR_PROJECT_NOT_CREATED": "Projekti nuk u krijua. Ju lutem provoni përsëri!",
+    "ERR_NOT_AUTHORIZED": "Ju nuk jeni i kyçur!",
+    "MSG_CHECKED_IN_SUCCESSFULLY": "U publikua me sukses",
+    "ERR_NOT_CHECKED_IN": "Diqka shkoi gabim. Projekti nuk u publikua!",
+    "MSG_UPDATED_PUBLISH": "Publikimi u përditësua me sukses",
+    "MSG_NEW_PUBLISH": "U krijua publikim i ri",
+    "MSG_PUBLISH_DELETED": "Publikimi u fshi",
+    "ERR_PUBLISH_NOT_DELETED": "Publikimi NUK u fshi",
+    "ERR_LOGIN_NOCREDS": "Përdoruesi apo Fjalëkalimi është dhënë gabim",
+    "ERR_THIS_USER_EXISTS": "Një përdorues është i regjistruar me këtë username"
+  },
+  "AUTH": {
+    "Username": "Shfrytëzuesi",
+    "Password": "Fjalëkalimi",
+    "Name": "Emri",
+    "Surname": "Mbiemri",
+    "RegisterHere": "Nuk keni llogari? Regjistrohu këtu",
+    "LOGIN": "Kyqu",
+    "SIGNUP": "Registrohu"
+  },
+  "PROJECT": {
+    "Projects": "Projektet",
+    "AddNewProject": "Shto projekt të ri",
+    "Members": "Anëtarët",
+    "Export": "Eksporto",
+    "Publish": "Publikimi",
+    "AddMembers": "Shto anëtarë në projekt",
+    "Name": "Emri i projektit",
+    "CheckIn": "Krijo Verzion",
+    "Description": "Përshkrimi i projektit",
+    "NoProjects": "Nuk u gjend asnjë projekt. Krijoni një të ri?",
+    "Loading": "Duke u ngarkuar"
+  },
+  "ROUTE": {
+    "General": "Gjenerale",
+    "Headers": "Header-at",
+    "Parameters": "Parametrat",
+    "Response": "Pergjegjja",
+    "Path": "Shtegu",
+    "Description": "Përshkrimi",
+    "AddHeader": "Shto header",
+    "AddParameter": "Shto parametër",
+    "AddResponse": "Shto pëgjegjje",
+    "ResponseExample": "Shemull i përgjegjjes"
+  },
+  "LABEL": {
+    "FillRouteData": "Ju lutem plotësoni fushat e kërkuara"
+  },
+  "CHECKIN": {
+    "Title": "Titulli",
+    "no_check_ins": "Nuk u gjend asnjë publikim i këtij projekti. Ju lutem krijoni një publikim së pari pastaj provoni ta eksportoni atë!"
+  },
+  "PUBLISH": {
+    "Current": "Publikimi aktual",
+    "Copied": "Linku publik u kopjua në memorje",
+    "NotCopied": "Linku publik nuk mund të kopjohet",
+    "Unpublish": "Fshij publikimin",
+    "no_publish": "Ky projekt nuk ka publikim",
+    "info": "Publikimi i një projekti munëson ndarjen e dokumentimit të API me persona të tjerë.\nPas publikimit të dokumentimt, një link do të gjenerohet për ju, i cili do të jetë i çasshëm nga të gjithë (pavarësisht nëse janë apo jo përdorues të <endoc />",
+    "how_to": "Publikimi mund të bëhet prej një verzioni ekzistues"
+  }
+}

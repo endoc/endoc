@@ -1,0 +1,95 @@
+doctype html
+html(lang='en')
+head
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+  link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet")
+body
+  div.container.py-5
+    h3 #{Project.Title}
+    h6.text-muted #{Project.Description}
+    hr
+    h6.text-muted.text-right #{Title}
+    br
+
+    h5 Endpoints
+    each e in Endpoints
+      div.card.my-3
+        div.card-header
+          if e.IsProtected === true
+            i.fa.fa-lock.pr-2.text-danger
+          else
+            i.fa.fa-unlock.pr-2.text-success
+          
+          if e.Method === 'GET'
+            span.badge.badge-primary.px-2.mr-2.text-right #{e.Method}
+          else if e.Method === 'POST'
+            span.badge.badge-warning.px-2.mr-2.text-right #{e.Method}
+          else if e.Method === 'PUT'
+            span.badge.badge-success.px-2.mr-2.text-right #{e.Method}
+          else if e.Method === 'DELETE'
+            span.badge.badge-danger.px-2.mr-2.text-right #{e.Method}
+          else
+            span.badge.badge-dark.px-2.mr-2.text-right #{e.Method}
+          span #{e.Path}
+          br
+          small.text-muted #{e.Description}
+        div.card-body.p-2
+          if e.Headers.length > 0
+            h6 Headers
+            table.table.table-sm.table-bordered
+              thead.bg-light
+                tr
+                  td.px-2 
+                    small Key
+                  td.px-2
+                    small Value
+                  td.px-2 
+                    small Description
+              tbody.text-muted
+                each h in e.Headers
+                  tr
+                    td.px-2 
+                      small #{h.Key}
+                    td.px-2 
+                      small #{h.Value}
+                    td.px-2 
+                      small #{h.Description}
+
+          
+          if e.Parameters.length > 0
+            h6 Parameters
+            table.table.table-sm.table-bordered
+              thead.bg-light
+                tr
+                  td.px-2
+                    small Required
+                  td.px-2
+                    small Type
+                  td.px-2
+                    small Key
+                  td.px-2
+                    small Type
+              tbody.text-muted
+                each p in e.Parameters
+                  tr
+                    td.px-2 
+                      if p.IsRequired
+                        span.text-danger *
+                    td.px-2 
+                      small #{p.Type}              
+                    td.px-2 
+                      small #{p.ParameterName}              
+                    td.px-2 
+                      small #{p.ParameterDataType}
+          
+          if e.Responses
+            div.border.rounded.p-4
+              h6 Responses
+              hr
+              each r in e.Responses
+                div.row
+                  div.col-2
+                    code HTTP #{r.StatusCode}
+                  div.col-10
+                    pre  #{r.Content}
+

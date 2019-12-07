@@ -1,0 +1,190 @@
+<p *ngIf="isLoading" class="text-center p-5">
+  <i class="fa fa-spinner fa-pulse fa-fw"></i>
+</p>
+
+<div *ngIf="!isLoading" class="row route-detail-wrapper p-1 m-0">
+  <div class="clear"></div>
+  <div class="col-md-12 p-0 mt-2">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link text-dark active" id="nav-general-tab" data-toggle="tab" href="#nav-general"
+          role="tab" aria-controls="nav-general" aria-selected="true">{{'ROUTE.General' | translate}}</a>
+        <a class="nav-item nav-link text-dark" id="nav-headers-tab" data-toggle="tab" href="#nav-headers" role="tab"
+          aria-controls="nav-headers">{{'ROUTE.Headers' | translate}}</a>
+        <a class="nav-item nav-link text-dark" id="nav-parameters-tab" data-toggle="tab" href="#nav-parameters"
+          role="tab" aria-controls="nav-parameters" aria-selected="false">{{'ROUTE.Parameters' | translate}}</a>
+        <a class="nav-item nav-link text-dark" id="nav-response-tab" data-toggle="tab" href="#nav-response" role="tab"
+          aria-controls="nav-response" aria-selected="false">{{'ROUTE.Response' | translate}}</a>
+      </div>
+    </nav>
+    <div class="tab-content py-3" id="nav-tabContent">
+      <!-- GENERAL DATA TAB -->
+      <div class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+        <div class="col-md-12 p-0">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="validationTooltipUsernamePrepend">
+                <input id="isProtected" style="display: none" type="checkbox" [(ngModel)]="route_to_edit.IsProtected">
+                <label for="isProtected" *ngIf="route_to_edit.IsProtected"
+                  class="fa fa-lock ml-2 pr-1 text-danger"></label>
+                <label for="isProtected" *ngIf="route_to_edit.IsProtected == false"
+                  class="fa fa-unlock ml-2 text-success"></label>
+              </span>
+            </div>
+            <input autocomplete="false" [ngClass]="{'is-invalid': !route_to_edit.Path}" type="text"
+              [(ngModel)]="route_to_edit.Path" placeholder="/api/example" class="form-control">
+            <div class="input-group-append col-md-2 p-0 m-0">
+              <select [(ngModel)]="route_to_edit.Method" [ngClass]="{'is-invalid': !route_to_edit.Method}"
+                class="custom-select square-select">
+                <option *ngFor="let m of methods" value="{{m}}"> {{ m }} </option>
+              </select>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col-md-12 p-0">
+          <textarea class="form-control" [(ngModel)]="route_to_edit.Description" placeholder="Route description"
+            rows="3"></textarea>
+        </div>
+      </div>
+
+      <!-- HEADERS DATA TAB -->
+      <div class="tab-pane fade show" id="nav-headers" role="tabpanel" aria-labelledby="nav-headers-tab">
+        <table class="table table-bordered">
+          <thead>
+            <!-- <tr class="text-center bg-dark">
+              <th colspan="4">
+                <h5 class="p-0 m-0 text-light">{{'ROUTE.Headers' | translate}}</h5>
+              </th>
+            </tr> -->
+            <tr class="text-center bg-light">
+              <th>Key</th>
+              <th>Value</th>
+              <th>{{'ROUTE.Description' | translate}}</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let h of route_to_edit.Headers; let i = index">
+              <td>
+                <input list="headerExamples" type="text" [(ngModel)]="h.Key" class="form-control">
+                <datalist id="headerExamples">
+                  <option *ngFor="let headerExample of header_types" value="{{headerExample}}">
+                </datalist>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="h.Value" class="form-control"> </td>
+              <td>
+                <input type="text" [(ngModel)]="h.Description" class="form-control"> </td>
+              <td class="text-center">
+                <label (click)="remove_header(i)" class="btn btn-danger btn-small rounded"> <i class="fa fa-times"></i>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" class="p-0">
+                <button class="btn btn-dark btn-block m-0 rounded-0" (click)="add_new_header()">
+                  {{'ROUTE.AddHeader' | translate}} </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PARAMETERS DATA TAB -->
+      <div class="tab-pane fade" id="nav-parameters" role="tabpanel" aria-labelledby="nav-parameters-tab">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center bg-light">
+              <th>Required</th>
+              <th>Type</th>
+              <th>Parameter</th>
+              <th>Data Type</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of route_to_edit.Parameters; let i = index">
+              <td>
+                <input type="checkbox" [(ngModel)]="p.IsRequired" class="form-control">
+              </td>
+              <td>
+                <select [(ngModel)]="p.Type" class="custom-select">
+                  <option *ngFor="let t of parameter_types" value="{{t}}"> {{ t }} </option>
+                </select>
+              </td>
+              <td>
+                <input type="text" [(ngModel)]="p.ParameterName" class="form-control">
+              </td>
+              <td>
+                <input list="headerExamples" type="text" [(ngModel)]="p.ParameterDataType" class="form-control">
+                <datalist id="headerExamples">
+                  <option *ngFor="let dt of data_types" value="{{dt}}">
+                </datalist>
+                <!-- <select [(ngModel)]="p.ParameterDataType" class="custom-select">
+                  <option *ngFor="let dt of data_types" value="{{dt}}"> {{ dt }} </option>
+                </select> -->
+              </td>
+              <td class="text-center">
+                <label (click)="remove_parameter(i)" class="btn btn-danger btn-small rounded"> <i
+                    class="fa fa-times"></i> </label>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="5" class="p-0">
+                <button class="btn btn-dark btn-block m-0 rounded-0" (click)="add_new_parameter()">
+                  {{'ROUTE.AddParameter' | translate}} </button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RESPONSE DATA TAB -->
+      <div class="tab-pane fade" id="nav-response" role="tabpanel" aria-labelledby="nav-response-tab">
+          <table class="table table-bordered">
+              <thead>
+                <tr class="text-center bg-light">
+                  <th>Status Code</th>
+                  <th>Content</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of route_to_edit.Responses; let i = index">
+                  <td>
+                    <input type="number" [(ngModel)]="p.StatusCode" class="form-control">
+                  </td>
+                  <td>
+                    <textarea rows="3" type="text" [(ngModel)]="p.Content" class="form-control"> </textarea>
+                  <td class="text-center">
+                    <label (click)="remove_response(i)" class="btn btn-danger btn-small rounded"> <i
+                        class="fa fa-times"></i> </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" class="p-0">
+                    <button class="btn btn-dark btn-block m-0 rounded-0" (click)="add_new_response()">
+                      {{'ROUTE.AddResponse' | translate}} </button>
+                  </td>
+                </tr>
+    
+              </tbody>
+            </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="route-save col-md-12 p-2 m-2">
+    <br>
+    <button [disabled]="!route_to_edit.Path || !route_to_edit.Method" class="btn btn-danger col-md-3 mr-2 pull-right"
+      (click)="updateRoute()">
+      <span *ngIf="!(!route_to_edit.Path || !route_to_edit.Method)"> <i class="fa fa-save pr-2"></i>
+        {{ 'GENERAL.Update' | translate }}
+      </span>
+      <span *ngIf="!route_to_edit.Path || !route_to_edit.Method"> {{'LABEL.FillRouteData' | translate}}</span>
+    </button>
+  </div>
+</div>

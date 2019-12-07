@@ -1,0 +1,91 @@
+{
+  "GENERAL": {
+    "Search": "Search",
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "Back": "Back",
+    "Close": "Close",
+    "General": "General",
+    "Settings": "Settings",
+    "Refresh": "Refresh",
+    "Update": "Update",
+    "Filter": "Filter",
+    "Delete": "Delete"
+  },
+  "FORMS": {
+    "Required": "This field is required"
+  },
+  "FIELDS": {
+    "Title": "Title",
+    "CreateDate": "Create Date"
+  },
+  "RESPONSE": {
+    "ERR_INVALID_CREDENTIALS": "Invalid credentials!",
+    "ERR_USER_DOESNT_EXIST": "This user does not exist!",
+    "ERR_SOMETHING_WENT_WRONG": "Something went wrong. Please try again!",
+    "MSG_SUCCESS_REGISTER": "User registred successfully!",
+    "MSG_UPDATED": "Updated successfully",
+    "MSG_PROJECT_CREATED": "Project was created successfully",
+    "ERR_PROJECT_NOT_CREATED": "Project was not created. Please try again!",
+    "ERR_NOT_AUTHORIZED": "You are not logged in!",
+    "MSG_CHECKED_IN_SUCCESSFULLY": "Checked In successfully",
+    "ERR_NOT_CHECKED_IN": "Something went wrong. Project was not checked in!",
+    "MSG_UPDATED_PUBLISH": "Publish updated",
+    "MSG_NEW_PUBLISH": "A new publish was created",
+    "MSG_PUBLISH_DELETED": "Publish deleted",
+    "ERR_PUBLISH_NOT_DELETED": "Publish was NOT deleted!",
+    "ERR_LOGIN_NOCREDS": "Username or Password is incorrect",
+    "ERR_THIS_USER_EXISTS": "A user is registred with this username"
+  },
+  "AUTH": {
+    "Username": "Username",
+    "Password": "Password",
+    "Name": "Name",
+    "Surname": "Surname",
+    "RegisterHere": "Don't have an account? Register here",
+    "LOGIN": "LOG IN",
+    "SIGNUP": "SIGN UP"
+  },
+  "PROJECT": {
+    "Projects": "Projects",
+    "AddNewProject": "Add new project",
+    "Members": "Members",
+    "Export": "Export",
+    "Publish": "Publish",
+    "CheckIn": "Check In",
+    "AddMembers": "Add member on this project",
+    "Name": "Project name",
+    "Description": "Project description",
+    "NoProjects": "No projects to show... Maybe start by creating one?",
+    "Loading": "Loading my projects"
+  },
+  "ROUTE": {
+    "General": "General",
+    "Headers": "Headers",
+    "Parameters": "Parameters",
+    "Response": "Response",
+    "Path": "Path",
+    "Description": "Description",
+    "AddHeader": "Add header",
+    "AddParameter": "Add parameter",
+    "AddResponse": "Add response",
+    "ResponseExample": "Response Example"
+  },
+  "LABEL": {
+    "FillRouteData": "Please fill required fields"
+  },
+  "CHECKIN": {
+    "Title": "Title",
+    "no_check_ins": "No publishes of this project were found. Please make a publish first then try to export!"
+  },
+  "PUBLISH": {
+    "Current": "Current publish",
+    "Copied": "Public link was copied to clipboard",
+    "NotCopied": "Can not copy the link",
+    "Unpublish": "Unpublish",
+    "no_publish": "This project doesn't have a public publish!",
+    "info": "Publish makes possible to share documentation of your API with other people.\nAfter a successful publish, a link will be generated for you, which will be accessible by all who have this link (including registred and unregistred users of <endoc />",
+    "how_to": "Publish can be created from an existing check-in"
+    
+  }
+}

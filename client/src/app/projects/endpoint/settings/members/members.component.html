@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-12" *ngIf="project_id">
+    <div class="input-group input-group-seamless">
+      <div class="input-group-prepend">
+        <div class="input-group-text" *ngIf="!is_loading_member">
+          @
+        </div>
+        <div class="input-group-text" *ngIf="is_loading_member">
+          <i class="fa fa-spin fa-spinner"></i>
+        </div>
+      </div>
+      <input type="text" class="form-control" placeholder="{{'PROJECT.AddMembers' | translate}}"
+        [(ngModel)]="member_to_add_on_project" (keyup.enter)="add_member_on_project()">
+      <div class="input-group-append">
+        <button class="btn btn-dark" [disabled]="!valid_member_to_add" type="button" (click)="add_member_on_project()">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="add_member_on_board_response" class="text-center">
+      <small *ngIf="!add_member_on_board_response.success" class="form-text text-danger">
+        {{ 'RESPONSE.' + add_member_on_board_response.message | translate }}
+        </small>
+    </div>
+    <hr>
+    <div class="col-md-12 taskMember mb-2 p-3" *ngFor="let m of members">
+      <img width="32" src="https://ui-avatars.com/api/?name={{m.Name}} {{m.Surname}}&size=64"
+        class="rounded-circle mr-2">
+      {{ m.Name }} {{ m.Surname }} <i> @{{m.Username}}</i>
+      <i class="btn btn-sm btn-outline-danger fa fa-times pull-right" (click)="remove_member_from_project(m._id)"></i>
+      <br>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+.rDescription {
+  word-wrap: normal;
+}
+
+.edit-btn {
+  cursor: pointer;
+}
+
+code {
+  padding: 0;
+}
