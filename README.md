@@ -3,7 +3,6 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/endoc/endoc)
 ![GitHub](https://img.shields.io/github/license/endoc/endoc)
 ![Website](https://img.shields.io/website?down_color=lightgrey&down_message=Down&label=Website&up_color=green&up_message=Up&url=http%3A%2F%2Fendoc.herokuapp.com%2F)
-![Twitter Follow](https://img.shields.io/twitter/follow/endocapp?label=Follow&style=social)
 
 # endoc
 **A free and open-source Endpoint Documentation tool**

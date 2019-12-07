@@ -21,12 +21,15 @@ app.use(bodyParser.json({
 }))
 app.use(cors())
 mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 }, (err) => {
   if (err) {
     console.log('Error: Database connection!\nStopping application...')
     process.exit(22)
   } else {
+    console.log('Connected to the database!')
     // Import API routes
     app.use('/api/', routeImporter)
 
@@ -36,14 +39,6 @@ mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
     })
 
     const port = process.env.PORT || config.Port || 3200
-    // https.createServer({
-    //   key: fs.readFileSync('env/server.key'),
-    //   cert: fs.readFileSync('env/server.cert')
-    // }, app)
-    //   .listen(3000, function () {
-    //     console.log('App started successfully on port ' + port)
-    //   })
-
     app.listen(port, () => console.log('App started successfully on port ' + port))
   }
 })
