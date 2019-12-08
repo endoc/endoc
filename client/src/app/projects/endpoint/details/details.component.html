@@ -8,7 +8,8 @@
       <div class="col-md-12 p-0 m-0">
         <i [ngClass]="{'text-danger fa-lock': selected_route.IsProtected, 'fa-unlock text-success': !selected_route.IsProtected}"
           class="fa pr-2 " aria-hidden="true"></i>
-        <a *ngIf="deviceService.isDesktop()" class="pull-right badge badge-danger px-2 ml-2 edit-btn" [routerLink]="['edit']"> EDIT </a>
+        <a *ngIf="deviceService.isDesktop()" class="pull-right badge badge-danger px-2 ml-2 edit-btn"
+          [routerLink]="['edit']"> EDIT </a>
         <span class="badge badge-{{css_class_of_path_method}} px-2">{{ selected_route.Method }}</span>
       </div>
       <br>
@@ -81,19 +82,30 @@
     </table>
   </div>
 
+  <!-- PARAMETERS RAW -->
+  <div *ngIf="selected_route.ParametersRaw" class="col-md-12 m-0 p-0">
+    <br>
+    <br>
+    <div class="bg-light border rounded p-4">
+      <h4> Raw Parameters: </h4>
+      <pre><code>{{ selected_route.ParametersRaw}}</code></pre>
+    </div>
+  </div>
+
+  <!-- Response -->
   <div *ngIf="selected_route.Responses.length" class="col-md-12 m-0 p-0">
-      <div class="bg-light border rounded p-4">
-        <h4> Response Example: </h4>
-        <br>
-        <br>
-        <div class="row" *ngFor="let item of selected_route.Responses">
-          <div class="col-2">
-            <code> <i>HTTP</i> <code> {{ item.StatusCode}}</code></code>
-          </div>
-          <div class="col-10">
-            <pre><code>{{ item.Content}}</code></pre>
-          </div>
+    <br>
+    <br>
+    <div class="bg-light border rounded p-4">
+      <h4> Response Example: </h4>
+      <div class="row border rounded my-3 py-2" *ngFor="let item of selected_route.Responses">
+        <div class="col-2">
+          <code> <i *ngIf="deviceService.isDesktop()">HTTP</i> {{ item.StatusCode}}</code>
+        </div>
+        <div class="col-10">
+          <pre><code>{{ item.Content}}</code></pre>
         </div>
       </div>
     </div>
+  </div>
 </div>

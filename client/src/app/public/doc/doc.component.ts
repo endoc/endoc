@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/services/authentication/api.service';
 import { CheckInModel } from 'src/models/project/check-in.model';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-doc',
@@ -12,7 +13,7 @@ export class DocComponent implements OnInit {
   check_in_id: string;
   ci: CheckInModel;
   filter: string;
-  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) { }
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, public deviceService: DeviceDetectorService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {

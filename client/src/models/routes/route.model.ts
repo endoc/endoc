@@ -11,6 +11,7 @@ export class RouteModel {
     Description: string;
     Headers: HeaderModel[] = [];
     Parameters: ParameterModel[] = [];
+    ParametersRaw: string;
     ResponseExample: string;
     Responses: ResponseModel[] = [];
 }

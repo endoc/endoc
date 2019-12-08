@@ -3,23 +3,7 @@
 </p>
 
 <div *ngIf="!isLoading" class="row route-detail-wrapper p-1 m-0">
-  <div class="clear"></div>
-  <div class="col-md-12 p-0 mt-2">
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link text-dark active" id="nav-general-tab" data-toggle="tab" href="#nav-general"
-          role="tab" aria-controls="nav-general" aria-selected="true">{{'ROUTE.General' | translate}}</a>
-        <a class="nav-item nav-link text-dark" id="nav-headers-tab" data-toggle="tab" href="#nav-headers" role="tab"
-          aria-controls="nav-headers">{{'ROUTE.Headers' | translate}}</a>
-        <a class="nav-item nav-link text-dark" id="nav-parameters-tab" data-toggle="tab" href="#nav-parameters"
-          role="tab" aria-controls="nav-parameters" aria-selected="false">{{'ROUTE.Parameters' | translate}}</a>
-        <a class="nav-item nav-link text-dark" id="nav-response-tab" data-toggle="tab" href="#nav-response" role="tab"
-          aria-controls="nav-response" aria-selected="false">{{'ROUTE.Response' | translate}}</a>
-      </div>
-    </nav>
-    <div class="tab-content py-3" id="nav-tabContent">
-      <!-- GENERAL DATA TAB -->
-      <div class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+    <div class="col-md-12 p-0 m-0" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
         <div class="col-md-12 p-0">
           <div class="input-group">
             <div class="input-group-prepend">
@@ -48,15 +32,56 @@
         </div>
       </div>
 
+
+  <div class="clear"></div>
+  <div class="col-md-12 p-0 mt-4">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <!-- <a class="nav-item nav-link text-dark active" id="nav-general-tab" data-toggle="tab" href="#nav-general"
+          role="tab" aria-controls="nav-general" aria-selected="true">{{'ROUTE.General' | translate}}</a> -->
+        <a class="nav-item nav-link text-dark active" id="nav-headers-tab" data-toggle="tab" href="#nav-headers" role="tab"
+          aria-controls="nav-headers">{{'ROUTE.Headers' | translate}}</a>
+        <a class="nav-item nav-link text-dark" id="nav-parameters-tab" data-toggle="tab" href="#nav-parameters"
+          role="tab" aria-controls="nav-parameters" aria-selected="false">{{'ROUTE.Parameters' | translate}}</a>
+        <a class="nav-item nav-link text-dark" id="nav-response-tab" data-toggle="tab" href="#nav-response" role="tab"
+          aria-controls="nav-response" aria-selected="false">{{'ROUTE.Response' | translate}}</a>
+      </div>
+    </nav>
+    <div class="tab-content py-3" id="nav-tabContent">
+      <!-- GENERAL DATA TAB -->
+      <!-- <div class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+        <div class="col-md-12 p-0">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="validationTooltipUsernamePrepend">
+                <input id="isProtected" style="display: none" type="checkbox" [(ngModel)]="route_to_edit.IsProtected">
+                <label for="isProtected" *ngIf="route_to_edit.IsProtected"
+                  class="fa fa-lock ml-2 pr-1 text-danger"></label>
+                <label for="isProtected" *ngIf="route_to_edit.IsProtected == false"
+                  class="fa fa-unlock ml-2 text-success"></label>
+              </span>
+            </div>
+            <input autocomplete="false" [ngClass]="{'is-invalid': !route_to_edit.Path}" type="text"
+              [(ngModel)]="route_to_edit.Path" placeholder="/api/example" class="form-control">
+            <div class="input-group-append col-md-2 p-0 m-0">
+              <select [(ngModel)]="route_to_edit.Method" [ngClass]="{'is-invalid': !route_to_edit.Method}"
+                class="custom-select square-select">
+                <option *ngFor="let m of methods" value="{{m}}"> {{ m }} </option>
+              </select>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col-md-12 p-0">
+          <textarea class="form-control" [(ngModel)]="route_to_edit.Description" placeholder="Route description"
+            rows="3"></textarea>
+        </div>
+      </div> -->
+
       <!-- HEADERS DATA TAB -->
-      <div class="tab-pane fade show" id="nav-headers" role="tabpanel" aria-labelledby="nav-headers-tab">
+      <div class="tab-pane fade show active" id="nav-headers" role="tabpanel" aria-labelledby="nav-headers-tab">
         <table class="table table-bordered">
           <thead>
-            <!-- <tr class="text-center bg-dark">
-              <th colspan="4">
-                <h5 class="p-0 m-0 text-light">{{'ROUTE.Headers' | translate}}</h5>
-              </th>
-            </tr> -->
             <tr class="text-center bg-light">
               <th>Key</th>
               <th>Value</th>
@@ -94,7 +119,9 @@
 
       <!-- PARAMETERS DATA TAB -->
       <div class="tab-pane fade" id="nav-parameters" role="tabpanel" aria-labelledby="nav-parameters-tab">
-        <table class="table table-bordered">
+          <a *ngIf="parameters_mode === 1" class="text-right btn-sm btn btn-link d-block" (click)="set_parameter_edit_mode(2)">Raw Mode</a>
+          <a *ngIf="parameters_mode === 2" class="text-right btn-sm btn btn-link d-block" (click)="set_parameter_edit_mode(1)">Table Mode</a>  
+        <table class="table table-bordered" *ngIf="parameters_mode === 1">
           <thead>
             <tr class="text-center bg-light">
               <th>Required</th>
@@ -122,9 +149,6 @@
                 <datalist id="headerExamples">
                   <option *ngFor="let dt of data_types" value="{{dt}}">
                 </datalist>
-                <!-- <select [(ngModel)]="p.ParameterDataType" class="custom-select">
-                  <option *ngFor="let dt of data_types" value="{{dt}}"> {{ dt }} </option>
-                </select> -->
               </td>
               <td class="text-center">
                 <label (click)="remove_parameter(i)" class="btn btn-danger btn-small rounded"> <i
@@ -140,6 +164,11 @@
 
           </tbody>
         </table>
+
+        <textarea *ngIf="parameters_mode === 2" 
+                  class="form-control" 
+                  [(ngModel)]="route_to_edit.ParametersRaw"
+                  rows="10"></textarea>
       </div>
 
       <!-- RESPONSE DATA TAB -->

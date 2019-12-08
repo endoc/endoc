@@ -5,6 +5,7 @@ import { ParameterModel } from 'src/models/routes/parameter.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/services/authentication/api.service';
 import { ResponseModel } from 'src/models/routes/reponse.model';
+import { CommunicationService } from 'src/services/communication.service';
 
 @Component({
   selector: 'app-new',
@@ -17,8 +18,9 @@ export class NewComponent implements OnInit {
   parameter_types: string[];
   data_types: string[];
   header_types: string[];
+  parameters_mode = 1; // 1=Key-Value, 2=Raw
 
-  constructor(private activatedRoute: ActivatedRoute, private api: ApiService) {
+  constructor(private activatedRoute: ActivatedRoute, private api: ApiService, private communication: CommunicationService) {
     this.fill_methods();
     this.fill_parameter_types();
     this.fill_parameter_data_types();
@@ -32,8 +34,12 @@ export class NewComponent implements OnInit {
   }
 
   async save_route() {
-    await this.api.post(`/api/project/${this.route_to_create.ProjectId}/endpoint/add`, this.route_to_create, true);
-    window.location.reload();
+    if (this.parameters_mode === 1) { delete this.route_to_create.ParametersRaw; }
+    if (this.parameters_mode === 2) { delete this.route_to_create.Parameters; }
+    const result = await this.api.post(`/api/project/${this.route_to_create.ProjectId}/endpoint/add`, this.route_to_create, true);
+    if (result.success) {
+      this.communication.newEndpointSaved(result.data._id);
+    }
   }
 
   // Helper methods
@@ -78,4 +84,8 @@ export class NewComponent implements OnInit {
     this.header_types = await this.api.get('/api/satellite/header_types');
   }
 
+  // Helpers
+  set_parameter_edit_mode(mode: number) {
+    this.parameters_mode = mode;
+  }
 }

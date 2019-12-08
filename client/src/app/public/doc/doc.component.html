@@ -21,7 +21,7 @@
       </div>
       <div class="card-body p2">
 
-        <div *ngIf="e.Headers">
+        <div *ngIf="e.Headers && e.Headers.length > 0">
           <h6> Headers </h6>
           <table class="table table-sm table-bordered">
             <thead class="bg-light">
@@ -41,9 +41,9 @@
           </table>
         </div>
 
-        <div *ngIf="e.Parameters">
+        <div *ngIf="(e.Parameters && e.Parameters.length > 0) || e.ParametersRaw">
             <h6> Parameters </h6>
-            <table class="table table-sm table-bordered">
+            <table *ngIf="e.Parameters.length > 0" class="table table-sm table-bordered">
               <thead class="bg-light">
                 <tr>
                   <td class="px-2"><small> Required </small></td>
@@ -63,13 +63,16 @@
                 </tr>
               </tbody>
             </table>
+
+            <pre *ngIf="e.ParametersRaw" class="border rounded col-md-12 p-2">{{ e.ParametersRaw }}</pre>
+
           </div>
 
           <div *ngIf="e.Responses.length" class="border rounded p-4">
             <h6> Response example: </h6>
             <div class="row" *ngFor="let item of e.Responses">
               <div class="col-2">
-                <code> <i>HTTP</i> <code> {{ item.StatusCode}}</code></code>
+                  <small class="text-danger"> <i *ngIf="deviceService.isDesktop()">HTTP</i> {{ item.StatusCode}}</small>
               </div>
               <div class="col-10">
                 <pre><code>{{ item.Content}}</code></pre>
