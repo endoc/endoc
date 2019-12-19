@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as JWT from 'jwt-decode';
-import { AppuserModel } from 'src/models/auth/AppUser.mode';
+import { AppuserModel } from 'src/models/auth/appUser.model';
 import { Observable } from 'rxjs';
 
 @Injectable()
