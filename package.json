@@ -6,6 +6,9 @@
   "homepage": "https://github.com/endoc/endoc#readme",
   "description": "Endpoint documentation tool",
   "main": "index.js",
+  "engines": {
+    "node": "10.16.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "node index.js",
