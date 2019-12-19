@@ -7,7 +7,6 @@ import { LanguageService } from 'src/services/language/lang.service';
   styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent  {
   constructor(private translate: LanguageService) {
     translate.setDefaultLanguage();

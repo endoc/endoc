@@ -1,37 +1,73 @@
 {
   "name": "endoc",
   "version": "2.1.0",
+  "author": "Agon Gashi <agonxgashi@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/endoc/endoc#readme",
   "description": "Endpoint documentation tool",
   "main": "index.js",
   "scripts": {
-    "buildendoc": "git pull && cd client && npm install && ng build --prod --extract-css=false —-base-href /endoc/ && cd .. && npm install && nodemon index.js",
-    "gh-page-publish": "cd client && npm install && ng build --prod --extract-css=false --base-href /endoc/ && cd .. && git add . && git commit -m \"gh publish \" && git push && git subtree push --prefix client/dist origin gh-pages"
+    "ng": "ng",
+    "start": "node index.js",
+    "build": "ng build --prod --extract-css=false"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/agonxgashi/endoc.git"
-  },
-  "keywords": [
-    "endpoint",
-    "api",
-    "documentation",
-    "tool"
-  ],
-  "author": "Agon Gashi <agonxgashi@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/agonxgashi/endoc/issues"
-  },
-  "homepage": "https://github.com/agonxgashi/endoc#readme",
+  "private": true,
   "dependencies": {
+    "@angular/animations": "^8.2.5",
+    "@angular/common": "^8.2.5",
+    "@angular/compiler": "^8.2.5",
+    "@angular/core": "^8.2.5",
+    "@angular/forms": "^8.2.5",
+    "@angular/platform-browser": "^8.2.5",
+    "@angular/platform-browser-dynamic": "^8.2.5",
+    "@angular/pwa": "^0.803.17",
+    "@angular/router": "^8.2.5",
+    "@angular/service-worker": "^8.2.5",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
+    "angular-particle": "^1.0.4",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.5.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "file-saver": "^2.0.2",
+    "font-awesome": "^4.7.0",
     "html-pdf": "^2.2.0",
+    "jquery": "^3.3.1",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
     "mongoose": "^5.7.5",
+    "ngx-device-detector": "^1.3.5",
+    "ngx-toastr": "^10.0.4",
     "path": "^0.12.7",
-    "pug": "^2.0.4"
+    "popper.js": "^1.14.3",
+    "pug": "^2.0.4",
+    "rxjs": "^6.5.3",
+    "shards-ui": "^2.1.2",
+    "webkul-micron": "^1.1.6",
+    "zone.js": "~0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.4",
+    "@angular/cli": "~8.3.4",
+    "@angular/compiler-cli": "^8.2.5",
+    "@angular/language-service": "^8.2.5",
+    "@types/jasmine": "~2.8.6",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "codelyzer": "^5.0.1",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~1.7.1",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.0",
+    "karma-jasmine": "~1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "^5.4.1",
+    "ts-node": "~5.0.1",
+    "tslint": "~5.9.1",
+    "typescript": "~3.5.3"
   }
 }

@@ -32,12 +32,12 @@
 }
 ```
 
-2) Navigate to `/client` folder to build Angular project. Run below command on your terminal: 
+2) Run below command on your terminal to build client application: 
 ```Bash
 ng build 
 ```
 
-3) Navigate back to root folder and start node server using below command:
+3) Start node server using below command:
 
  ```Bash
 node index.js

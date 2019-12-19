@@ -57,3 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 env/
+
+# compiled output
+/tmp
+/out-tsc
+/dist
+
+# Tests
+*.spec.ts

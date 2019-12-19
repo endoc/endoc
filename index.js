@@ -3,15 +3,13 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const fs = require('fs')
-const https = require('https')
 
 const routeImporter = require('./routes')
 const config = require('./env/config.json')
 
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'client/dist')))
+app.use(express.static(path.join(__dirname, 'dist')))
 app.use(bodyParser.urlencoded({
   'extended': 'true'
 }))
