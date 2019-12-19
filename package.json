@@ -11,6 +11,7 @@
   },
   "scripts": {
     "ng": "ng",
+    "start": "node index.js",
     "build": "ng build --prod --extract-css=false"
   },
   "private": true,
