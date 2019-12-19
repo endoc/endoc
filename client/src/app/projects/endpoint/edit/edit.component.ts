@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
   parameter_types: string[];
   data_types: string[];
   header_types: string[];
+  parameters_mode: number; // 1=Key-Value, 2=Raw
 
   constructor(private api: ApiService, private activatedRoute: ActivatedRoute) {
     this.fill_methods();
@@ -39,10 +40,13 @@ export class EditComponent implements OnInit {
   async get_route_details() {
     this.isLoading = true;
     this.route_to_edit = await this.api.get(`/api/project/${this.route_to_edit.ProjectId}/endpoint/${this.route_to_edit._id}`);
+    this.parameters_mode = this.route_to_edit.ParametersRaw ? 2 : 1;
     this.isLoading = false;
   }
 
   async updateRoute() {
+    if (this.parameters_mode === 1) { delete this.route_to_edit.ParametersRaw; }
+    if (this.parameters_mode === 2) { delete this.route_to_edit.Parameters; }
     await this.api.put(`/api/project/${this.route_to_edit.ProjectId}/endpoint/${this.route_to_edit._id}/edit`, this.route_to_edit, false, true);
   }
 
@@ -87,4 +91,8 @@ export class EditComponent implements OnInit {
     this.header_types = await this.api.get('/api/satellite/header_types');
   }
 
+  // Helpers
+  set_parameter_edit_mode(mode: number) {
+    this.parameters_mode = mode;
+  }
 }

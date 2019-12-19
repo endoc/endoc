@@ -23,11 +23,12 @@ const EndpointSchema = new mongoose.Schema({
   Method: String,
   Path: String,
   Description: String,
+  Parameters: [ParameterSchema],
+  ParametersRaw: String,
   ResponseExample: String,
   Responses: [ResponseSchema],
   IsProtected: Boolean,
-  Headers: [HeaderSchema],
-  Parameters: [ParameterSchema]
+  Headers: [HeaderSchema]
 })
 
 var EndpointModel = mongoose.model('Endpoint', EndpointSchema)

@@ -5,6 +5,7 @@ import { ReturnObject } from 'src/models/returnObj.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { ApiService } from 'src/services/authentication/api.service';
+import { CommunicationService } from 'src/services/communication.service';
 
 @Component({
   selector: 'app-endpoint',
@@ -29,7 +30,16 @@ export class EndpointComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private api: ApiService,
-    public deviceService: DeviceDetectorService) {
+    public deviceService: DeviceDetectorService,
+    private communication: CommunicationService) {
+      this.communication.endpointListChanged$.subscribe(
+        (newEndpointId) => {
+          this.get_all_routes();
+          this.router.navigate([`endpoint/${newEndpointId}`], {
+            relativeTo: this.activatedRoute
+          });
+        }
+      );
   }
 
   ngOnInit() {
@@ -84,7 +94,6 @@ export class EndpointComponent implements OnInit {
   async add_member_on_project() {
     this.is_loading_member = true;
     const member = { username: this.member_to_add_on_project };
-    // this.add_member_on_board_response = await this.api.get(`/api/project/add-member/${this.selected_project}/${this.member_to_add_on_project}`, true);
     this.add_member_on_board_response = await this.api.post(`/api/project/${this.selected_project}/member/add`, member, true);
     if (this.add_member_on_board_response.success) {
       this.selected_project_model.Members = this.add_member_on_board_response.data;

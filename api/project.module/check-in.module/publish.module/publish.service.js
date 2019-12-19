@@ -59,7 +59,6 @@ module.exports = {
       try {
         const api_doc_hash = req.params.api_doc_id
         const _data = await Publish.findOne({ PublicHash: api_doc_hash }).populate('CheckInId', '-_id').select('-_id CheckInId').exec()
-        // console.log(_data.Endpoints[0])
         res.status(200).send(new ReturnObj(true, 'MSG_API_DOC_FOUND', 200, _data ? _data.CheckInId : undefined))
       } catch (error) {
         res.status(500).send(new ReturnObj(false, 'MSG_API_DOC_NOT_FOUND', 500, null))
