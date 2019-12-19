@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
 
     // Client-side pages
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'client/dist/index.html'))
+      res.sendFile(path.join(__dirname, 'dist/index.html'))
     })
 
     const port = process.env.PORT || config.Port || 3200
