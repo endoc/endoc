@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppuserModel } from 'src/models/auth/AppUser.mode';
+import { AppuserModel } from 'src/models/auth/appUser.model';
 import { ReturnObject } from 'src/models/returnObj.model';
 import { Router } from '@angular/router';
 import { JwtManager } from 'src/services/authentication/jwt-manager.service';
