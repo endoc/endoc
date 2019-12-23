@@ -17,25 +17,26 @@
 
 
 
-## Instructions to run the application: 
+## Instructions to run the application locally: 
 
-1) Create a file on `/env` folder and name it `config.json`. Paste on this file the code below:
+1) Create a `.env` file on the root folder. Put on this file the necessary variables to run this application:
 
-```JSON
-{
-  "Port": 3000,
-  "DB": {
-    "Mongo_ConStr": "<<YOUR_MONGODB_CON_STRING>>"
-  },
-  "JWT_SECRET": "<<YOUR_JWT_SECRET_KEY>>",
-  "JWT_TIMEOUT": 86400
-}
+```TXT
+JWT_SECRET=YOUR_SUPERSECRET_KEY
+JWT_TIMEOUT=864000
+MONGO_CON_STR=YOUR_MONGODB_CONNECTION_STRING
 ```
 
-2) Run below command on your terminal to build client application: 
+2) Build front-end part of the application: 
 ```Bash
+# To build angular app
 ng build 
+
+# --------------------
+# Or to serve the app
+ng serve
 ```
+
 
 3) Start node server using below command:
 

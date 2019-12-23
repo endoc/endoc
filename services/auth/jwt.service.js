@@ -1,7 +1,5 @@
 const jwt = require('jsonwebtoken')
-// const config = require('./../../env/config.json')
 const jwtSecret = process.env.JWT_SECRET
-// const jwtSecret = process.env.JWT_SECRET || config.JWT_SECRET
 const jwtTimeout = process.env.JWT_TIMEOUT || 86400
 
 module.exports = {
