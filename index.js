@@ -3,9 +3,9 @@ const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+require('dotenv').config()
 
 const routeImporter = require('./routes')
-// const config = require('./env/config.json')
 
 const app = express()
 
@@ -19,7 +19,6 @@ app.use(bodyParser.json({
 }))
 app.use(cors())
 mongoose.connect(process.env.MONGO_CON_STR, {
-// mongoose.connect(process.env.MONGO_CON_STR || config.DB.Mongo_ConStr, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true

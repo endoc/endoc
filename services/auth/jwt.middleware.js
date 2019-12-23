@@ -1,9 +1,7 @@
 const jwt = require('jsonwebtoken')
 const apiRoutes = require('express').Router()
-// const config = require('./../../env/config.json')
 const ReturnObj = require('../../models/return-object.model')
 const jwtSecret = process.env.JWT_SECRET
-// const jwtSecret = process.env.JWT_SECRET || config.JWT_SECRET
 
 apiRoutes.use(function (req, res, next) {
   // check header or url parameters or post parameters for token
