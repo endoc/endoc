@@ -6,7 +6,7 @@ const ProjectSchema = new Schema({
   Description: String,
   Members: [{ type: Schema.Types.ObjectId, ref: 'AppUser' }],
   CreatedBy: Schema.Types.ObjectId,
-  CreateDate: { type: Date, default: Date.now() }
+  CreateDate: { type: Date, default: () => Date.now() }
 })
 
 var ProjectModel = mongoose.model('Project', ProjectSchema)

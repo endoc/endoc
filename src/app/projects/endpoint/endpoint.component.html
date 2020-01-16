@@ -20,19 +20,33 @@
 <div class="d-flex" *ngIf="deviceService.isDesktop()">
   <nav class="sidebar sidenav bg-dark ">
     <div class="stickyBtnGroup bg-dark">
-      <div class="btn-group p-0 m-0 w-100  " role="group">
-        <button class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['/project']">
+      <div class="btn-group p-0 m-0 w-100 row" role="group">
+
+        <button class="btn  btn-secondary col-md-3 rounded-0" [routerLink]="['/project']">
           <i class="fa fa-arrow-left" aria-hidden="true"></i>
         </button>
-        <button class="btn  btn-secondary col-md-4" [routerLink]="['endpoint', 'new']">
+        <button class="btn  btn-secondary col-md-3" [routerLink]="['endpoint', 'new']">
           <i class="fa fa-plus-circle" aria-hidden="true"></i>
         </button>
-        <button type="button" class="btn  btn-secondary col-md-4" (click)="get_project_data()">
+        <button type="button" class="btn btn-secondary col-md-3" (click)="get_project_data()">
           <i [ngClass]="{'fa-spin': (is_loading_project || is_loading_routes)}" class="fa fa-refresh"></i>
         </button>
-        <button type="button" class="btn  btn-secondary col-md-4 rounded-0" [routerLink]="['settings']">
+        <!-- <button type="button" class="btn btn-secondary col-md-4 rounded-0" [routerLink]="['settings']">
           <i class="fa fa-cog"></i>
-        </button>
+        </button> -->
+
+        <div class="col-md-3 p-0">
+          <button class="btn btn-secondary btn-block m-0 rounded-0" type="button" id="projectSettingsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="projectSettingsDropdown">
+            <a class="dropdown-item" [routerLink]="['settings', 'members']"><i class="fa fa-users pr-2"></i> {{ 'PROJECT.Members' | translate }} </a>
+            <a class="dropdown-item" [routerLink]="['settings', 'check-in']"><i class="fa fa-code-fork pr-2"></i> {{ 'PROJECT.CheckIn' | translate }}  </a>
+            <a class="dropdown-item" [routerLink]="['settings', 'publish']"><i class="fa fa-cogs pr-2"></i> {{ 'PROJECT.Publish' | translate }}  </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['logs']"><i class="fa fa-chain-broken pr-2"></i> Logs </a>
+          </div>
+        </div>
       </div>
       <div class="mt-1 px-2 ">
         <div class="input-group input-group-seamless">
