@@ -11,8 +11,6 @@
 
 ---
 
-*Note: This project is under heavy construction. As such, the API may change dramatically between major releases and documentation is lacking.*
-
 [![](./assets/images/endoc_mockup.png "Homepage")](http://endoc.herokuapp.com/)
 
 
