@@ -8,6 +8,10 @@
   #logo-img {
     width: 100%;
   }
+
+  .u-image {
+    width: 70% !important;
+  }
 }
 
 .lg-wrapper {
@@ -29,4 +33,8 @@
 
 .lg-bg>* {
   z-index: 2 !important;
+}
+
+.u-image {
+  width: 10vw;
 }

@@ -4,15 +4,13 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from '../login/login-routing.module';
 import { LoginComponent } from './login.component';
-import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
     EndocSharedModule,
-    LoginRoutingModule,
-    ParticlesModule
+    LoginRoutingModule
   ]
 })
 export class LoginModule { }

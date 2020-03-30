@@ -36,7 +36,7 @@ mongoose.connect(process.env.MONGO_CON_STR, {
       res.sendFile(path.join(__dirname, 'dist/index.html'))
     })
 
-    const port = process.env.PORT || 3200
+    const port = process.env.PORT || 3000
     app.listen(port, () => console.log('App started successfully on port ' + port))
   }
 })
