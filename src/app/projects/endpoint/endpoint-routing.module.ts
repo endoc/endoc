@@ -18,7 +18,7 @@ const routes: Routes = [
 
       // Project settings
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
-      { path: 'logs', loadChildren: () => import('./logs/logs.module').then(m => m.LogsModule) }
+      // { path: 'logs', loadChildren: () => import('./logs/logs.module').then(m => m.LogsModule) }
     ]
   },
 ];
