@@ -9,6 +9,7 @@ const logController = require('./logs.module/logs.controller')
 router.get('/list', projectService.list)
 router.get('/:project_id', projectService.view)
 router.post('/add', projectService.save)
+router.get('/:project_id/postman', projectService.getPostmanMaterial)
 
 // Child modules
 router.use('/:project_id/member', memberController)
