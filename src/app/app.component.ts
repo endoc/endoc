@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { LanguageService } from 'src/services/language/lang.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-
-export class AppComponent  {
-  constructor(private translate: LanguageService) {
-    translate.setDefaultLanguage();
-  }
+export class AppComponent {
+  title = 'client';
 }
